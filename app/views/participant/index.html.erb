@@ -1,0 +1,11 @@
+<h1>投稿参加</h1>
+
+<p>参加者ID:<%= @participant_id %></p>
+
+<form id="participant_form" action="/join" accept-charset="UTF-8" method="post">
+  <%= token_tag %>
+
+  <input type="text" name="clicker_id" id="clicker_id" />
+
+  <input type="submit" value="Join" />
+</form>
