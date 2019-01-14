@@ -8,3 +8,24 @@
   <div id="clicker-canvas">Waiting・・・</div>
 <% end %>
 
+<div>
+<form id="clicker" action="/four" accept-charset="UTF-8" method="post">
+  <%= token_tag %>
+
+  <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
+  <input type="hidden" name="clicker_type" id="clicker_type" value="1"/>
+
+  <input type="submit" value="4択投票" />
+</form>
+</div>
+
+<div>
+<form id="clicker" action="/tow" accept-charset="UTF-8" method="post">
+  <%= token_tag %>
+
+  <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
+  <input type="hidden" name="clicker_type" id="clicker_type" value="2"/>
+
+  <input type="submit" value="2択投票" />
+</form>
+</div>

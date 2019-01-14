@@ -1,22 +1,30 @@
 <h1>先生クリッカー TOP</h1>
 
 <p>投票ID: <%= @clicker_id %></p>
+<div data-clicker-r-id="<%= @clicker_id %>"></div>
+<div data-clicker-t-id="<%= @clicker_type %>"></div>
 <br>
+<div id="clicker-r-canvas">Waiting・・・</div>
 
-<form id="new_clicker" action="/top" accept-charset="UTF-8" method="post">
+<div>
+<form id="new_clicker4" name="new_clicker4" action="/top" accept-charset="UTF-8" method="post">
   <%= token_tag %>
 
   <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
   <input type="hidden" name="clicker_type" id="clicker_type" value="1"/>
 
-  <input type="submit" value="4択投票 開始" />
+  <button id="btn_4" value="4択投票 開始" />
 </form>
+</div>
 
-<form id="new_clicker" action="/top" accept-charset="UTF-8" method="post">
+
+<div>
+<form id="new_clicker2" name="new_clicker2" action="/top" accept-charset="UTF-8" method="post">
   <%= token_tag %>
 
   <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
   <input type="hidden" name="clicker_type" id="clicker_type" value="2"/>
 
-  <input type="submit" value="2択投票 開始" />
+  <button id="btn_2" value="2択投票 開始" />
 </form>
+</div>
