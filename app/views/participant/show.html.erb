@@ -1,31 +1,67 @@
-<h1>参加者 TOP</h1>
-<p>参加者ID:<%= @participant_id %></p>
+<h3>参加者 TOP</h3>
 <p id="clicker_id">投票ID:<%= @clicker_id %></p>
+
+<hr>
+
+<p>参加者ID:<%= @participant_id %></p>
+
+<hr>
+
 <div data-clicker-id="<%= @clicker_id %>"></div>
+<div data-clicker-type="<%= @clicker_type %>"></div>
+
 <% if @clicker_type %>
   <div id="clicker-canvas"><h2>投票種別：<%= @clicker_type %></h2></div>
 <% else %>
   <div id="clicker-canvas">Waiting・・・</div>
 <% end %>
 
-<div>
-<form id="clicker" action="/four" accept-charset="UTF-8" method="post">
-  <%= token_tag %>
+<div id="four_area">
+  <form id="clicker" action="/four" accept-charset="UTF-8" method="post">
+    <%= token_tag %>
 
-  <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
-  <input type="hidden" name="clicker_type" id="clicker_type" value="1"/>
+    <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
+    <input type="hidden" name="clicker_type" id="clicker_type" value="1"/>
 
-  <input type="submit" value="4択投票" />
-</form>
+    <div class="form-group">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_a" value="a">  A　　
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_b" value="b">  B　　
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_c" value="c">  C　　
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_d" value="d">  D　　
+        </label>
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="4択の投票" />
+  </form>
 </div>
 
-<div>
-<form id="clicker" action="/tow" accept-charset="UTF-8" method="post">
-  <%= token_tag %>
+<div id="two_area">
+  <form id="clicker" action="/tow" accept-charset="UTF-8" method="post">
+    <%= token_tag %>
 
-  <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
-  <input type="hidden" name="clicker_type" id="clicker_type" value="2"/>
+    <input type="hidden" name="clicker_id" id="clicker_id" value="<%= @clicker_id %>"/>
+    <input type="hidden" name="clicker_type" id="clicker_type" value="2"/>
 
-  <input type="submit" value="2択投票" />
-</form>
+    <div class="form-group">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_a" value="a">  A　　
+        </label>
+        <label class="btn btn-info">
+          <input type="radio" autocomplete="off" name="anwser" id="anwser_b" value="b">  B　　
+        </label>
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="2択の投票" />
+  </form>
 </div>

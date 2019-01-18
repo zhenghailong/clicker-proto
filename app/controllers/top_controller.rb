@@ -2,6 +2,8 @@ class TopController < ApplicationController
   def show
     @clicker_id = 4.times.map { SecureRandom.random_number(10) }.join
     @clicker_type = ''
+
+    cookies[:user_id] = session.id
     Redis.current.set(@clicker_id, 1)
   end
 

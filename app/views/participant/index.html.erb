@@ -5,7 +5,9 @@
 <form id="participant_form" action="/join" accept-charset="UTF-8" method="post">
   <%= token_tag %>
 
-  <input type="text" name="clicker_id" id="clicker_id" />
+  <div class="form-group">
+    <input type="text" name="clicker_id" id="clicker_id" />
+  </div>
 
-  <input type="submit" value="Join" />
+  <input class="btn btn-primary" type="submit" value=" Join " />
 </form>

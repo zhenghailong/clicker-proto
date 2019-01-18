@@ -2,9 +2,29 @@
 // All this logic will automatically be available in application.js.
 $(document).on("ready turbolinks:load", function() {
   var canvas = $("#clicker-canvas");
-  var clickerId = $("[data-clicker-id]");
+  var clickerId = $("[data-clicker-id]").data("clicker-id");
+  var clickerType = $("[data-clicker-type]").data("clicker-type");
 
-  if (clickerId.length != 0) {
+  var four = $("#four_area");
+  var two = $("#two_area");
+  var toggleBtn = function(clicker_type) {
+    if (clicker_type == 1) {
+      four.show();
+      two.hide();
+    } else {
+      four.hide();
+      two.show();
+    }
+  }
+
+  if (clickerType) {
+    toggleBtn(clickerType);
+  } else {
+    four.hide();
+    two.hide();
+  }
+
+  if (clickerId) {
     if (App.clicker) {
       App.cable.subscriptions.remove(App.clicker);
     }
@@ -12,12 +32,13 @@ $(document).on("ready turbolinks:load", function() {
     App.clicker = App.cable.subscriptions.create(
       {
         channel: "ClickerChannel",
-        clicker_id: $("[data-clicker-id]").data("clicker-id")
+        clicker_id: clickerId
       },
       {
         received: function(data) {
           if (data.action == 'start') {
             canvas.html("<h2>投票種別：" + data.clicker_type + "</h2>")
+            toggleBtn(data.clicker_type);
           }
         },
       }
