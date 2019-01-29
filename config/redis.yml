@@ -4,6 +4,7 @@ default: &default
 
 development:
   <<: *default
+  host: 192.168.3.2
 
 test:
   <<: *default
